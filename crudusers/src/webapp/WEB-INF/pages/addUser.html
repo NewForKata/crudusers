@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Добавить нового пользователя</h1>
+
+<a href="/">Главная</a>
+<a href="/userlist">Вернуться к списку юзеров</a>
+
+<!--<c:url value="/edit" var="var"/>-->
+<!--<form action="${var}" method="POST">-->
+<!--    <input type="hidden" name="id" value="${film.id}">-->
+<!--    <label for="title">Title</label>-->
+<!--    <input type="text" name="title" id="title">-->
+<!--    <label for="year">Year</label>-->
+<!--    <input type="text" name="year" id="year">-->
+<!--    <label for="genre">Genre</label>-->
+<!--    <input type="text" name="genre" id="genre">-->
+<!--    <label for="watched">Watched</label>-->
+<!--    <input type="text" name="watched" id="watched">-->
+<!--    <input type="submit" value="Edit film">-->
+<!--</form>-->
+
+<form th:action="@{/add}" method="post">
+    <p><label for="name">Имя</label></p>
+    <p><input type="text" id="name" name="name" required></p>
+    <p><label for="lastName">Фамилия</label></p>
+    <p><input type="text" id="lastName" name="lastName" required></p>
+    <p><label for="age">Возраст</label></p>
+    <p><input type="number" id="age" name="age" required></p>
+    <p>
+        <input type="submit" value="Добавить пользователя">
+    </p>
+</form>
+
+</body>
+</html>

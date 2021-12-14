@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="/">Главная</a>
+
+<h1>Список пользователей</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>age</th>
+    </tr>
+
+    <tr th:each="user : ${userList}">
+        <td th:text="${user.id}">Id</td>
+        <td th:text="${user.name}">Имя</td>
+        <td th:text="${user.lastName}">Фамилия</td>
+        <td th:text="${user.age}">age</td>
+
+        <td>
+            <form th:action="@{edit/{id}(id=${user.id})}" th:object="${user}">
+                <button type="submit">Изменить</button>
+            </form>
+        </td>
+
+        <td>
+            <form th:action="@{'/delete/'+${user.id}}" >
+                <input type="hidden" name="id" th:value="${user.id}">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<h2>Добавить нового пользователя</h2>
+<a th:href="@{'/add'}">Добавить нового пользователя</a>
+
+</body>
+</html>
