@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Component
-@Transactional
 public class UserDAOImpl implements UserDAO {
 
     @PersistenceContext
@@ -20,14 +19,12 @@ public class UserDAOImpl implements UserDAO {
         ).getResultList();
     }
 
-    @Transactional
     @Override
     public void save(User user) {
         User managed = entityManager.merge(user);
         entityManager.persist(managed);
     }
 
-    @Transactional
     @Override
     public void delete(User user) {
         User managed = entityManager.merge(user);
